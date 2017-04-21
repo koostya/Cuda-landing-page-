@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Шаблон Cuda -2</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="fonts/stylesheet.css">
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/style.css">
+		<meta name="format-detection" content="telephone=no">
+	</head>
+	<body>
+		<!--_________________________________________________________________________________________________________________________________________SCREEN-1-->
+		
+		<div class="screen-index">
+			<div class="nav-index-mobile">
+				<div class="nav-index-mobile-logo">
+					<a href="#">
+						<svg>
+							<path d="M116.416,29.282 L116.055,33.667 C113.871,35.388 111.716,36.269 109.599,36.269 C106.465,36.269 104.475,34.829 103.797,32.754 C102.019,34.872 99.775,36.269 96.557,36.269 C94.113,36.269 92.202,35.094 90.920,33.208 C89.115,34.239 85.115,36.333 80.254,36.269 C77.121,36.228 75.130,34.829 74.453,32.754 C72.674,34.829 70.515,36.269 67.212,36.269 C64.809,36.269 62.920,35.136 61.638,33.305 C56.562,35.655 53.443,36.269 51.376,36.269 C48.157,36.269 46.251,34.956 45.532,33.051 C43.203,35.211 40.747,36.269 37.952,36.269 C34.767,36.269 32.486,34.602 31.651,32.048 C26.853,34.592 22.470,36.079 16.793,36.269 C6.755,36.605 0.014,30.678 0.014,20.324 C0.014,8.209 8.340,-0.146 20.713,-0.010 C26.734,0.056 30.902,2.041 32.755,3.298 L29.402,10.930 C27.901,10.204 25.079,9.694 22.698,9.694 C16.588,9.694 13.606,13.659 13.435,18.781 C13.259,24.074 16.530,27.579 21.375,28.044 C26.164,28.503 29.584,27.402 31.677,26.480 L33.548,13.275 L43.796,13.275 L41.974,26.106 C41.805,27.250 42.525,28.181 43.584,28.181 C44.600,28.181 45.574,27.250 45.743,26.106 L47.564,13.275 L57.812,13.275 L55.822,27.546 C55.579,29.284 56.191,30.381 59.927,28.868 C59.793,28.066 59.717,27.229 59.717,26.360 C59.717,18.611 64.671,12.725 70.853,12.725 C73.309,12.725 74.961,13.783 76.189,15.477 L77.713,4.425 L87.961,4.425 L84.700,27.715 C84.494,29.329 85.220,30.536 89.203,28.452 C89.111,27.778 89.061,27.079 89.061,26.360 C89.061,18.780 94.015,12.725 100.198,12.725 C102.654,12.725 104.305,13.783 105.534,15.477 L105.830,13.275 L116.078,13.275 L114.045,27.715 C113.833,29.367 114.850,29.663 116.416,29.282 ZM73.309,20.686 C71.319,20.686 69.752,22.719 69.752,25.048 C69.752,26.826 70.684,28.223 72.251,28.223 C74.199,28.223 75.808,26.191 75.808,23.862 C75.808,22.083 74.834,20.686 73.309,20.686 ZM102.654,20.686 C100.664,20.686 99.097,22.719 99.097,25.048 C99.097,26.826 100.029,28.223 101.595,28.223 C103.543,28.223 105.153,26.191 105.153,23.862 C105.153,22.083 104.179,20.686 102.654,20.686 Z" class="cls-1"/>
+						</svg>
+					</a>
+				</div>
+				<div class="nav-index-mobile-menu">
+					<div id="nav-icon">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+			</div>
+			<aside class="sidebar-menu">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Work</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</aside>
+			<nav class="nav-index">
+				<div class="nav-index-logo">
+					<a href="#">
+						<svg>
+							<path d="M116.416,29.282 L116.055,33.667 C113.871,35.388 111.716,36.269 109.599,36.269 C106.465,36.269 104.475,34.829 103.797,32.754 C102.019,34.872 99.775,36.269 96.557,36.269 C94.113,36.269 92.202,35.094 90.920,33.208 C89.115,34.239 85.115,36.333 80.254,36.269 C77.121,36.228 75.130,34.829 74.453,32.754 C72.674,34.829 70.515,36.269 67.212,36.269 C64.809,36.269 62.920,35.136 61.638,33.305 C56.562,35.655 53.443,36.269 51.376,36.269 C48.157,36.269 46.251,34.956 45.532,33.051 C43.203,35.211 40.747,36.269 37.952,36.269 C34.767,36.269 32.486,34.602 31.651,32.048 C26.853,34.592 22.470,36.079 16.793,36.269 C6.755,36.605 0.014,30.678 0.014,20.324 C0.014,8.209 8.340,-0.146 20.713,-0.010 C26.734,0.056 30.902,2.041 32.755,3.298 L29.402,10.930 C27.901,10.204 25.079,9.694 22.698,9.694 C16.588,9.694 13.606,13.659 13.435,18.781 C13.259,24.074 16.530,27.579 21.375,28.044 C26.164,28.503 29.584,27.402 31.677,26.480 L33.548,13.275 L43.796,13.275 L41.974,26.106 C41.805,27.250 42.525,28.181 43.584,28.181 C44.600,28.181 45.574,27.250 45.743,26.106 L47.564,13.275 L57.812,13.275 L55.822,27.546 C55.579,29.284 56.191,30.381 59.927,28.868 C59.793,28.066 59.717,27.229 59.717,26.360 C59.717,18.611 64.671,12.725 70.853,12.725 C73.309,12.725 74.961,13.783 76.189,15.477 L77.713,4.425 L87.961,4.425 L84.700,27.715 C84.494,29.329 85.220,30.536 89.203,28.452 C89.111,27.778 89.061,27.079 89.061,26.360 C89.061,18.780 94.015,12.725 100.198,12.725 C102.654,12.725 104.305,13.783 105.534,15.477 L105.830,13.275 L116.078,13.275 L114.045,27.715 C113.833,29.367 114.850,29.663 116.416,29.282 ZM73.309,20.686 C71.319,20.686 69.752,22.719 69.752,25.048 C69.752,26.826 70.684,28.223 72.251,28.223 C74.199,28.223 75.808,26.191 75.808,23.862 C75.808,22.083 74.834,20.686 73.309,20.686 ZM102.654,20.686 C100.664,20.686 99.097,22.719 99.097,25.048 C99.097,26.826 100.029,28.223 101.595,28.223 C103.543,28.223 105.153,26.191 105.153,23.862 C105.153,22.083 104.179,20.686 102.654,20.686 Z" class="cls-1"/>
+						</svg>
+					</a>
+				</div>
+				<div class="nav-index-menu">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Work</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="screen-index-heading">
+				<h1>Hi there! We are the new kids on the block <br/>and we build awesome websites and mobile apps.</h1>
+				<a href="#"><span class="screen-index-heading-btn">WORK WITH US!</span></a>
+			</div>
+		</div>
+		<!--__________________________________________________________________________________________________________________________________________________SCREEN-HOME-->
+		<div class="screen-home">
+			<div class="screen-home-heading">
+				<h2>SERVICES WE PROVIDE</h2>
+				<p>We are working with both individuals and businesses from all over the globe to create awesome websites and applications.</p>
+			</div>
+			<div class="screen-home-block">
+				<div class="screen-home-block-item">
+					<div class="screen-home-block-img">
+						<svg class="svg-1">
+							<g>
+								<path d="M119.281,13.999 L55.281,13.999 L55.281,80.000 L119.281,80.000 L99.125,47.000 L119.281,13.999 Z" class="cls-1"/>
+								<path d="M55.281,66.749 L55.281,80.000 L72.281,69.000 L55.281,66.749 Z" class="cls-2"/>
+								<path d="M72.281,68.999 L24.281,68.999 L5.937,4.999 L72.281,4.999 L72.281,68.999 Z" class="cls-3"/>
+								<path d="M3.716,0.180 C6.384,-0.534 9.126,1.049 9.840,3.716 L40.381,117.695 C41.096,120.362 39.513,123.104 36.845,123.819 C34.178,124.533 31.436,122.951 30.722,120.283 L0.181,6.304 C-0.534,3.637 1.049,0.895 3.716,0.180 Z" class="cls-4"/>
+							</g>
+						</svg>
+					</div>
+					<div class="screen-home-block-features">
+						<h3>Branding</h3>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.</p>
+					</div>
+				</div>
+				<div class="screen-home-block-item">
+					<div class="screen-home-block-img">
+						<svg class="svg-2">
+							<g>
+								<path d="M-0.006,90.178 L3.943,130.338 L40.697,113.679 C40.697,113.679 32.877,87.224 -0.006,90.178 Z" class="cls-1"/>
+								<path d="M76.845,3.139 C88.085,9.629 91.937,24.001 85.447,35.241 L79.947,44.767 C73.458,56.007 59.085,59.858 47.846,53.369 C36.606,46.879 32.755,32.507 39.244,21.267 L44.744,11.741 C51.233,0.501 65.606,-3.350 76.845,3.139 Z" class="cls-2"/>
+								<path d="M44.494,12.174 C44.494,12.174 55.666,16.315 65.840,22.189 C76.018,28.065 85.197,35.674 85.197,35.674 L72.697,57.324 L31.994,33.824 L44.494,12.174 Z" class="cls-3"/>
+								<path d="M34.037,30.045 C34.037,30.045 45.209,34.186 55.383,40.060 C65.561,45.936 74.740,53.545 74.740,53.545 L40.697,113.679 C40.697,113.679 37.735,109.659 32.171,106.446 C25.609,102.658 17.458,107.190 17.458,107.190 C17.458,107.190 17.552,98.006 10.393,93.873 C4.949,90.729 -0.006,90.178 -0.006,90.178 L34.037,30.045 Z" class="cls-4"/>
+							</g>
+						</svg>
+					</div>
+					<div class="screen-home-block-features">
+						<h3>Design</h3>
+						<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem  </p>
+					</div>
+				</div>
+				<div class="screen-home-block-item">
+					<div class="screen-home-block-img">
+						<svg class="svg-3">
+							<g>
+								<path d="M156.660,87.927 L151.923,90.198 C150.435,90.911 149.031,92.833 148.803,94.466 L147.604,99.272 C147.049,100.826 147.356,103.211 148.288,104.573 L151.748,109.631 C152.679,110.993 152.488,113.062 151.321,114.228 L146.182,119.367 C145.015,120.533 142.947,120.725 141.586,119.793 L136.479,116.300 C135.118,115.368 132.732,115.060 131.178,115.615 L127.005,116.683 C125.373,116.929 123.454,118.348 122.740,119.835 L120.886,123.700 C120.174,125.188 118.286,126.055 116.692,125.628 L109.672,123.747 C108.078,123.320 106.878,121.625 107.004,119.980 L107.342,115.569 C107.467,113.924 106.489,111.770 105.166,110.784 C105.166,110.784 104.856,110.553 103.625,109.322 C102.311,108.008 101.952,107.518 101.952,107.518 C100.976,106.188 98.833,105.202 97.187,105.328 L92.697,105.672 C91.051,105.799 89.356,104.597 88.929,103.004 L87.049,95.984 C86.622,94.390 87.490,92.503 88.977,91.789 L93.140,89.793 C94.629,89.079 96.052,87.162 96.306,85.531 L97.059,82.499 C97.586,80.936 97.255,78.543 96.323,77.181 L93.488,73.037 C92.556,71.675 92.748,69.606 93.915,68.439 L99.053,63.301 C100.220,62.134 102.289,61.941 103.650,62.873 L107.166,65.279 C108.527,66.211 110.884,66.444 112.402,65.799 L116.346,64.529 C117.960,64.182 119.864,62.682 120.578,61.194 L122.739,56.687 C123.453,55.199 125.341,54.331 126.934,54.758 L133.954,56.639 C135.548,57.066 136.748,58.762 136.622,60.407 L136.313,64.445 C136.187,66.090 137.201,68.194 138.566,69.120 C138.566,69.120 139.760,69.931 141.387,71.558 C142.386,72.557 142.386,72.557 142.386,72.557 C143.327,73.747 145.442,74.618 147.088,74.492 L152.940,74.043 C154.586,73.917 156.281,75.118 156.708,76.712 L158.589,83.731 C159.015,85.325 158.148,87.214 156.660,87.927 ZM128.423,84.523 C125.148,81.247 119.844,81.243 116.577,84.510 C113.308,87.778 113.315,93.080 116.590,96.356 C119.866,99.631 125.169,99.637 128.436,96.369 C131.704,93.103 131.697,87.799 128.423,84.523 ZM95.043,56.565 L88.623,57.769 C87.002,58.072 85.250,59.603 84.729,61.169 L82.871,65.704 C82.132,67.179 82.290,69.500 83.221,70.861 L86.904,76.244 C87.836,77.605 87.644,79.673 86.477,80.840 L80.819,86.499 C79.652,87.665 77.584,87.857 76.222,86.925 L70.908,83.289 C69.547,82.357 67.229,82.208 65.759,82.957 L61.115,84.891 C59.550,85.417 58.022,87.175 57.718,88.797 L56.544,95.063 C56.240,96.685 54.641,98.012 52.991,98.012 L44.991,98.012 C43.341,98.012 41.742,96.685 41.438,95.063 L40.270,88.837 C39.967,87.215 38.436,85.463 36.870,84.944 L32.152,83.000 C30.679,82.257 28.360,82.410 26.999,83.342 L21.761,86.925 C20.400,87.857 18.332,87.665 17.165,86.499 L11.507,80.840 C10.340,79.673 10.148,77.605 11.080,76.243 L14.671,70.995 C15.602,69.633 15.758,67.313 15.014,65.840 L13.079,61.136 C12.558,59.570 10.806,58.040 9.185,57.736 L2.939,56.565 C1.318,56.261 -0.009,54.662 -0.009,53.012 L-0.009,45.012 C-0.009,43.362 1.318,41.763 2.939,41.459 L9.185,40.288 C10.806,39.984 12.558,38.454 13.079,36.888 L15.013,32.185 C15.757,30.712 15.601,28.392 14.670,27.030 L11.079,21.781 C10.147,20.419 10.339,18.350 11.506,17.183 L17.163,11.526 C18.330,10.359 20.398,10.167 21.759,11.098 L26.998,14.682 C28.359,15.614 30.678,15.768 32.151,15.024 L36.870,13.079 C38.436,12.560 39.967,10.808 40.270,9.186 L41.438,2.961 C41.742,1.339 43.341,0.012 44.991,0.012 L52.991,0.012 C54.641,0.012 56.240,1.339 56.544,2.961 L57.718,9.227 C58.022,10.848 59.550,12.606 61.115,13.132 L65.760,15.067 C67.230,15.816 69.548,15.666 70.909,14.734 L76.222,11.099 C77.584,10.167 79.653,10.359 80.819,11.526 L86.477,17.183 C87.643,18.350 87.836,20.419 86.904,21.780 L83.221,27.162 C82.290,28.524 82.132,30.845 82.871,32.320 L84.729,36.856 C85.250,38.422 87.002,39.951 88.623,40.256 L95.043,41.459 C96.664,41.764 97.991,43.362 97.991,45.012 L97.991,53.012 C97.991,54.662 96.664,56.261 95.043,56.565 ZM48.908,36.040 C41.760,36.040 35.967,41.848 35.967,49.012 C35.967,56.176 41.760,61.984 48.908,61.984 C56.055,61.984 61.848,56.176 61.848,49.012 C61.848,41.848 56.055,36.040 48.908,36.040 Z" class="cls-1"/>
+								<path d="M131.468,99.391 C126.531,104.327 118.521,104.319 113.571,99.370 C108.625,94.422 108.614,86.412 113.552,81.475 C118.488,76.539 126.500,76.547 131.447,81.495 C136.393,86.444 136.404,94.456 131.468,99.391 ZM48.909,67.497 C38.726,67.497 30.473,59.223 30.473,49.017 C30.473,38.811 38.726,30.538 48.909,30.538 C59.091,30.538 67.344,38.811 67.344,49.017 C67.344,59.223 59.091,67.497 48.909,67.497 Z" class="cls-2"/>
+								<path d="M97.844,118.874 C72.844,95.875 94.844,64.874 94.844,64.874 L149.844,117.875 C149.844,117.875 123.884,142.831 97.844,118.874 ZM12.844,83.875 C-21.156,46.875 13.844,13.875 13.844,13.875 L83.844,83.875 C83.844,83.875 46.844,120.874 12.844,83.875 Z" class="cls-3"/>
+							</g>
+						</svg>
+					</div>
+					<div class="screen-home-block-features">
+						<h3>Development</h3>
+						<p>At vero eos et accusamus et iusto odio dignissimos qui blanditiis praesentium.</p>
+					</div>
+				</div>
+				<div class="screen-home-block-item">
+					<div class="screen-home-block-img">
+						<svg class="svg-4">
+							<g>
+								<path d="M48.045,107.593 C48.045,107.593 49.652,108.809 49.734,111.167 C49.817,113.524 49.175,128.742 49.175,128.742 C49.175,128.742 63.605,111.742 67.781,106.459 C71.223,102.104 71.828,93.900 65.649,88.601 C59.471,83.302 48.045,107.593 48.045,107.593 Z" class="cls-1"/>
+								<path d="M18.898,90.765 C18.898,90.765 17.041,89.982 14.958,91.089 C12.876,92.196 0.017,100.360 0.017,100.360 C0.017,100.360 7.525,79.364 10.012,73.106 C12.062,67.948 18.865,63.322 26.543,66.023 C34.221,68.724 18.898,90.765 18.898,90.765 Z" class="cls-2"/>
+								<path d="M26.019,95.743 L39.876,103.743 C41.550,104.709 42.123,106.850 41.157,108.524 C40.190,110.198 38.050,110.771 36.376,109.805 L22.519,101.805 C20.845,100.838 20.272,98.698 21.238,97.023 C22.205,95.349 24.345,94.776 26.019,95.743 Z" class="cls-3"/>
+								<path d="M29.746,108.287 C33.573,110.496 34.884,115.389 32.675,119.215 C30.465,123.041 15.599,132.733 15.599,132.733 C15.599,132.733 16.609,115.041 18.818,111.215 C21.027,107.389 25.920,106.078 29.746,108.287 Z" class="cls-4"/>
+								<path d="M91.438,4.160 C90.838,2.349 90.428,0.728 90.525,0.560 C90.622,0.393 90.656,0.262 90.601,0.271 C90.546,0.279 90.109,0.230 90.052,0.085 C89.996,-0.060 89.867,-0.036 89.767,0.138 C89.666,0.312 88.061,0.800 86.200,1.222 C86.200,1.222 51.089,9.185 35.389,37.937 C17.923,69.924 19.239,91.716 19.239,91.716 C19.201,93.625 20.522,95.966 22.175,96.921 L27.956,100.258 C29.609,101.212 31.130,102.090 31.336,102.210 C31.543,102.329 33.064,103.207 34.717,104.161 L40.856,107.706 C42.509,108.660 45.216,108.665 46.872,107.717 C46.872,107.717 65.431,97.353 84.400,66.234 C101.483,38.207 91.438,4.160 91.438,4.160 Z" class="cls-5"/>
+								<path d="M70.930,33.955 C78.805,38.502 81.503,48.571 76.956,56.447 C72.410,64.322 62.340,67.020 54.465,62.473 C46.590,57.927 43.892,47.856 48.438,39.981 C52.985,32.106 63.055,29.408 70.930,33.955 Z" class="cls-6"/>
+								<path d="M68.947,37.389 C74.926,40.841 76.974,48.486 73.523,54.464 C70.071,60.443 62.426,62.491 56.447,59.039 C50.469,55.588 48.420,47.943 51.872,41.964 C55.324,35.986 62.969,33.937 68.947,37.389 Z" class="cls-7"/>
+							</g>
+						</svg>
+					</div>
+					<div class="screen-home-block-features">
+						<h3>ROCKET SCIENCE</h3>
+						<p>Et harum quidem rerum est et expedita distinctio. Nam libero tempore.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--_____________________________________________________________________________________________________________________________________________SCREEN-PEOPLE-->
+		<div class="screen-people">
+			<div class="screen-people-heading">
+				<h2>MEET OUR BEAUTIFUL TEAM</h2>
+				<p>We are a small team of designers and developers, who help brands with big ideas.</p>
+			</div>
+			<div class="screen-people-block">
+				<div class="screen-people-block-item">
+					<div class="screen-people-item-img"></div>
+					<h3>ANNE HATHAWAY</h3>
+					<p class="work">CEO / Marketing Guru</p>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
+					<ul>
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+					</ul>
+				</div>
+				<div class="screen-people-block-item">
+					<div class="screen-people-item-img"></div>
+					<h3>Kate Upton</h3>
+					<p class="work">Creative Director</p>
+					<p>Duis aute irure dolor in in voluptate velit esse cillum dolore fugiat nulla pariatur. Excepteur sint occaecat non diam proident.</p>
+					<ul>
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+					</ul>
+				</div>
+				<div class="screen-people-block-item">
+					<div class="screen-people-item-img"></div>
+					<h3>Olivia Wilde</h3>
+					<p class="work">Lead Designer</p>
+					<p>Nemo enim ipsam voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem nesciunt.</p>
+					<ul>
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+					</ul>
+				</div>
+				<div class="screen-people-block-item">
+					<div class="screen-people-item-img"></div>
+					<h3>Ashley Greene</h3>
+					<p class="work">SEO / Developer</p>
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+					<ul>
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--__________________________________________________________________________________________________________________________________SCREEN-DIAGRAMMA-->
+		
+		<div class="screen-diagramma">
+			<div class="screen-diagramma-heading">
+				<h2>WE GOT SKILLS!</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			</div>
+			<div class="screen-diagramma-block">
+				<div class="circle-diagramma">
+					<div class="over-ring">
+						<svg class="over-image">
+							<circle  cx="150" cy="150" r="73.5"></circle>
+						</svg>
+						<div class="procent"><span class="lines-1"></span><span>%</span></div>
+					</div>
+					<h2>Web Design</h2>
+				</div>
+				<div class="circle-diagramma">
+					<div class="over-ring">
+						<svg class="over-image">
+							<circle  cx="150" cy="150" r="73.5"></circle>
+						</svg>
+						<div class="procent"><span class="lines-2"></span><span>%</span></div>
+					</div>
+					<h2>HTML / CSS</h2>
+				</div>
+				<div class="circle-diagramma">
+					<div class="over-ring">
+						<svg class="over-image">
+							<circle  cx="150" cy="150" r="73.5"></circle>
+						</svg>
+						<div class="procent"><span class="lines-3"></span><span>%</span></div>
+					</div>
+					<h2>GRAPHIC DESIGN</h2>
+				</div>
+				<div class="circle-diagramma">
+					<div class="over-ring">
+						<svg class="over-image">
+							<circle  cx="150" cy="150" r="73.5"></circle>
+						</svg>
+						<div class="procent"><span class="lines-4"></span><span>%</span></div>
+					</div>
+					<h2>UI / UX</h2>
+				</div>
+			</div>
+		</div>
+		<!--___________________________________________________________________________________________________________________________________SCREEN-PORTFOLIO-->
+		<div class="screen-portfolio">
+			<div class="screen-portfolio-heading">
+				<h2>OUR PORTFOLIO</h2>
+				<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur, adipisci velit, sed quia non numquam</p>
+			</div>
+			<div class="screen-portfolio-block">
+				<div class="screen-portfolio-block-tab">
+					<ul class="screen-portfolio-block-tab-menu">
+						<li><a href="#tab-1">ALL</a></li>
+						<li><a href="#tab-2">WEB</a></li>
+						<li><a href="#tab-3">APPS</a></li>
+						<li><a href="#tab-4">ICONS</a></li>
+					</ul>
+					<div id="tab-1">
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Isometric Perspective Mock-Up</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-1.png" alt="">
+							<h2>Isometric Perspective Mock-Up</h2>
+						</div>
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Time Zone App UI</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-2.png" alt="">
+							<h2>Time Zone App UI</h2>
+						</div>
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Viro Media Players UI</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-3.png" alt="">
+							<h2>Viro Media Players UI</h2>
+						</div>
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Blog / Magazine Flat UI Kit</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-4.png" alt="">
+							<h2>Blog / Magazine Flat UI Kit</h2>
+						</div>
+						<div class="hidden">
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Isometric Perspective Mock-Up</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-1.png" alt="">
+								<h2>Isometric Perspective Mock-Up</h2>
+							</div>
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Time Zone App UI</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-2.png" alt="">
+								<h2>Time Zone App UI</h2>
+							</div>
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Viro Media Players UI</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-3.png" alt="">
+								<h2>Viro Media Players UI</h2>
+							</div>
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Blog / Magazine Flat UI Kit</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-4.png" alt="">
+								<h2>Blog / Magazine Flat UI Kit</h2>
+							</div>
+						</div>
+					</div>
+					<div id="tab-2">
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Isometric Perspective Mock-Up</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-1.png" alt="">
+							<h2>Isometric Perspective Mock-Up</h2>
+						</div>
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Time Zone App UI</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-2.png" alt="">
+							<h2>Time Zone App UI</h2>
+						</div>
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Viro Media Players UI</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-3.png" alt="">
+							<h2>Viro Media Players UI</h2>
+						</div>
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Blog / Magazine Flat UI Kit</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-4.png" alt="">
+							<h2>Blog / Magazine Flat UI Kit</h2>
+						</div>
+						<div class="hidden">
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Isometric Perspective Mock-Up</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-1.png" alt="">
+								<h2>Isometric Perspective Mock-Up</h2>
+							</div>
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Time Zone App UI</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-2.png" alt="">
+								<h2>Time Zone App UI</h2>
+							</div>
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Viro Media Players UI</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-3.png" alt="">
+								<h2>Viro Media Players UI</h2>
+							</div>
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Blog / Magazine Flat UI Kit</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-4.png" alt="">
+								<h2>Blog / Magazine Flat UI Kit</h2>
+							</div>
+						</div>
+					</div>
+					<div id="tab-3">
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Isometric Perspective Mock-Up</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-1.png" alt="">
+							<h2>Isometric Perspective Mock-Up</h2>
+						</div>
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Time Zone App UI</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-2.png" alt="">
+							<h2>Time Zone App UI</h2>
+						</div>
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Viro Media Players UI</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-3.png" alt="">
+							<h2>Viro Media Players UI</h2>
+						</div>
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Blog / Magazine Flat UI Kit</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-4.png" alt="">
+							<h2>Blog / Magazine Flat UI Kit</h2>
+						</div>
+						<div class="hidden">
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Isometric Perspective Mock-Up</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-1.png" alt="">
+								<h2>Isometric Perspective Mock-Up</h2>
+							</div>
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Time Zone App UI</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-2.png" alt="">
+								<h2>Time Zone App UI</h2>
+							</div>
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Viro Media Players UI</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-3.png" alt="">
+								<h2>Viro Media Players UI</h2>
+							</div>
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Blog / Magazine Flat UI Kit</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-4.png" alt="">
+								<h2>Blog / Magazine Flat UI Kit</h2>
+							</div>
+						</div>
+					</div>
+					<div id="tab-4">
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Isometric Perspective Mock-Up</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-1.png" alt="">
+							<h2>Isometric Perspective Mock-Up</h2>
+						</div>
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Time Zone App UI</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-2.png" alt="">
+							<h2>Time Zone App UI</h2>
+						</div>
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Viro Media Players UI</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-3.png" alt="">
+							<h2>Viro Media Players UI</h2>
+						</div>
+						<div class="screen-portfolio-block-tab-item">
+							<span class="inner">
+								<span>Blog / Magazine Flat UI Kit</span>
+								<a href="#">LOAD PROJECT</a>
+							</span>
+							<img src="img/screen-portfolio-item-4.png" alt="">
+							<h2>Blog / Magazine Flat UI Kit</h2>
+						</div>
+						<div class="hidden">
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Isometric Perspective Mock-Up</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-1.png" alt="">
+								<h2>Isometric Perspective Mock-Up</h2>
+							</div>
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Time Zone App UI</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-2.png" alt="">
+								<h2>Time Zone App UI</h2>
+							</div>
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Viro Media Players UI</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-3.png" alt="">
+								<h2>Viro Media Players UI</h2>
+							</div>
+							<div class="screen-portfolio-block-tab-item">
+								<span class="inner">
+									<span>Blog / Magazine Flat UI Kit</span>
+									<a href="#">LOAD PROJECT</a>
+								</span>
+								<img src="img/screen-portfolio-item-4.png" alt="">
+								<h2>Blog / Magazine Flat UI Kit</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="screen-portfolio-footer-btn">
+					<span class="screen-portfolio-btn">LOAD MORE PROJECTS</span>
+				</div>
+			</div>
+		</div>
+		<!--___________________________________________________________________________________________________________________________________SCREEN-REVIEWS-->
+		<div class="screen-reviews">
+			<div class="screen-reviews-heading">
+				<h2>WHAT POEPLE SAY ABOUT US</h2>
+				<p>Our clients love us!</p>
+			</div>
+			<div class="screen-reviews-block">
+				<div class="screen-reviews-block-item">
+					<div class="screen-reviews-block-item-img"></div>
+					<div class="screen-reviews-block-item-text">
+						<p>“Nullam dapibus blandit orci, viverra gravida dui lobortis eget. Maecenas fringilla urna eu nisl scelerisque.”</p>
+						<h3>Chanel Iman</h3>
+						<p class="profession">CEO of Pinterest</p>
+					</div>
+				</div>
+				<div class="screen-reviews-block-item">
+					<div class="screen-reviews-block-item-img"></div>
+					<div class="screen-reviews-block-item-text">
+						<p>“Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta.”</p>
+						<h3>ADRIANA LIMA</h3>
+						<p class="profession">Founder of Instagram</p>
+					</div>
+				</div>
+				<div class="screen-reviews-block-item">
+					<div class="screen-reviews-block-item-img"></div>
+					<div class="screen-reviews-block-item-text">
+						<p>“Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta.”</p>
+						<h3>ANNE HATHAWAY</h3>
+						<p class="profession">Lead Designer at Behance</p>
+					</div>
+				</div>
+				<div class="screen-reviews-block-item">
+					<div class="screen-reviews-block-item-img"></div>
+					<div class="screen-reviews-block-item-text">
+						<p>“Phasellus non purus vel arcu tempor commodo. Fusce semper, purus vel luctus molestie, risus sem cursus neque.”</p>
+						<h3>EMMA STONE</h3>
+						<p class="profession">Co-Founder of Shazam</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--________________________________________________________________________________________________________________________________________________SCREEN-FORM-->
+		<div class="screen-form">
+			<div class="screen-form-heading">
+				<h2>GET IN TOUCH</h2>
+				<p>1600 Pennsylvania Ave NW, Washington, DC 20500, United States of America. Tel: (202) 456-1111</p>
+			</div>
+			<div class="screen-form-block">
+				<form id="application" action=" send.php" method="POST" name="application">
+					<input name="name" type="text" id="applicationName" maxlength="20" placeholder="Your Name" required />
+					<input name="email" type="text" id="applicationEmail" maxlength="20" placeholder="Your Email" required />
+					<textarea name="comment" id="applicationText" placeholder="Your Message"></textarea>
+					<button class="applicationButton" type="submit" form="application">SEND MESSAGe</button>
+					<!--[if IE 9]>
+					<script type="text/javascript">
+					(function setPlaceHolders(){
+					var input = document.getElementsByTagName('input'); // get all text fields
+					var cls = "placeholdr"; // set name of the class
+					if (input) { // if fields found
+						for (var i=0; i < input.length; i++) {
+							var t = input[i];
+							var txt = t.getAttribute("placeholder");
+							
+							if (txt.length > 0) { // if placeholder found
+								t.className = t.value.length == 0 ? t.className+" "+cls : t.className; // add class
+								t.value = t.value.length > 0 ? t.value : txt; // if no value found
+								
+								t.onfocus = function() { // on focus
+									this.className = this.className.replace(cls);
+									this.value = this.value == this.getAttribute("placeholder") ? "" : this.value;
+								}
+							
+								t.onblur = function() { // on focus out
+									if (this.value.length == 0) {
+										this.value = this.getAttribute("placeholder");
+										this.className = this.className+" "+cls; // add class
+									}
+								}
+							}
+						}
+					}
+					})();
+					</script>
+					<![endif]-->
+					<!--[if IE 9]>
+					<script type="text/javascript">
+					(function setPlaceHolders(){
+					var textarea = document.getElementsByTagName('textarea'); // get all text fields
+					var cls = "placeholdr"; // set name of the class
+					if (textarea) { // if fields found
+						for (var i=0; i < textarea.length; i++) {
+							var t = textarea[i];
+							var txt = t.getAttribute("placeholder");
+							
+							if (txt.length > 0) { // if placeholder found
+								t.className = t.value.length == 0 ? t.className+" "+cls : t.className; // add class
+								t.value = t.value.length > 0 ? t.value : txt; // if no value found
+								
+								t.onfocus = function() { // on focus
+									this.className = this.className.replace(cls);
+									this.value = this.value == this.getAttribute("placeholder") ? "" : this.value;
+								}
+							
+								t.onblur = function() { // on focus out
+									if (this.value.length == 0) {
+										this.value = this.getAttribute("placeholder");
+										this.className = this.className+" "+cls; // add class
+									}
+								}
+							}
+						}
+					}
+					})();
+					</script>
+					<![endif]-->
+				</form>
+			</div>
+		</div>
+		<!--______________________________________________________________________________________________________________________________________________SCREEN-FOOTER-->
+		<footer>
+			<ul>
+				<li><a href="#">Facebook</a></li>
+				<li><a href="#">Twitter</a></li>
+				<li><a href="#">Google+</a></li>
+				<li><a href="#">LinkedIn</a></li>
+				<li><a href="#">Behance</a></li>
+				<li><a href="#">Dribbble</a></li>
+				<li><a href="#">GitHub</a></li>
+			</ul>
+		</footer>
+		<script src="js/jquery-3.0.0.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.easytabs/3.2.0/jquery.easytabs.min.js"></script>
+		<script src="js/jquery.animateNumber.js"></script>
+		<script>
+		var offset = $('.screen-diagramma-block').offset().top-$(window).height() * 0.9;
+		var flag = false;
+		$(window).on('load scroll', function(){
+		if ($(window).scrollTop() >= offset) {
+		if (!flag) {
+		flag = !flag;
+		$('.lines-1')
+		.prop('number', 10)
+		.animateNumber({
+		number: 90
+		},
+		3700
+		);
+		$('.lines-2')
+		.prop('number', 10)
+		.animateNumber({
+		number: 75
+		},
+		3700
+		);
+		$('.lines-3')
+		.prop('number', 10)
+		.animateNumber({
+		number: 70
+		},
+		3700
+		);
+		$('.lines-4')
+		.prop('number', 10)
+		.animateNumber({
+		number: 85
+		},
+		3700
+		);
+		}
+		}
+		});
+		</script>
+		<script>
+			$(document).ready(function(){
+			$('.sidebar-menu li a').click(function(){
+			$('#nav-icon, .sidebar-menu').removeClass('open');
+		});
+		});
+		</script>
+		<script>
+			$(window).scroll(function(){
+				var offset = $('.screen-diagramma-block').offset().top-$(window).height() * 0.9;
+				var scrollTop = $(this).scrollTop();
+				$('.circle-diagramma:nth-child(1)').toggleClass('diagramma-animate-1', scrollTop >= offset);
+				$('.circle-diagramma:nth-child(2)').toggleClass('diagramma-animate-2', scrollTop >= offset);
+				$('.circle-diagramma:nth-child(3)').toggleClass('diagramma-animate-3', scrollTop >= offset);
+				$('.circle-diagramma:nth-child(4)').toggleClass('diagramma-animate-4', scrollTop >= offset);
+		});
+		</script>
+		<script>
+			$(document).ready(function(){
+			$('#nav-icon').click(function(){
+			$('#nav-icon, .sidebar-menu').toggleClass('open');
+		});
+			$(window).on('resize', function(){
+		if ($(window).width() >= 752) {
+		$('#nav-icon, .sidebar-menu').removeClass('open');
+		}
+		});
+		});
+		</script>
+		<script>
+		$('.screen-portfolio-block-tab').easytabs();
+		</script>
+		<script>
+			$(".screen-portfolio-btn").click(function () {
+		$('.hidden').addClass("visible");
+		});
+		</script>
+		<script>
+			$(".screen-portfolio-btn").click(function () {
+		$('.screen-portfolio-btn').addClass("hidden");
+		});
+		</script>
+		<script>
+			$(".screen-portfolio-block-tab-menu").click(function () {
+		$('.hidden').removeClass("visible");
+		});
+		</script>
+		<script>
+			$(".screen-portfolio-block-tab-menu").click(function () {
+		$('.screen-portfolio-btn').removeClass("hidden");
+		});
+		</script>
+	</body>
+</html>
